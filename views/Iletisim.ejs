@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iletişim</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+</head>
+
+<body>
+
+    <style>
+        @keyframes background2 {
+
+            /* resimler ile bir animasyon yapacaz*/
+            0% {
+                background-image: url(img/ilkbahar2.jpg);
+            }
+
+            25% {
+                background-image: url(img/K─▒s╠º.jpg);
+            }
+
+            50% {
+                background-image: url(img/Sonbahar.jpg);
+            }
+
+            75% {
+                background-image: url(img/Yaz.jpg);
+            }
+
+            100% {
+                background-image: url(img/ilkbahar2.jpg);
+            }
+        }
+    </style>
+
+
+    <header class="container">
+
+        <nav>
+
+            <div class="HAVA2">
+                <a href="/">ANA sayfa</a>
+            </div>
+            <div class="MENU">
+                <ul>
+                    <li>
+                        <a href="<%= link === 'Haberler' && 'active' %>" href="/news">Haberler</a>
+                    </li>
+                    <li>
+                        <a href="<%= link === 'Hakkımızda' && 'active' %>" href="/about">Hakkımızda</a>
+                    </li>
+                    <li>
+                        <a href="<%= link === 'İletişim' && 'active' %>" href="/communication"">İletişim</a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="IletisimMesajdiv">
+        <div>
+            <div class="containerİletisim">
+                <h3>İletşim formu</h3>
+                <form id="contact" action="" method="">
+
+
+                    <div class="form-control">
+                        <input placeholder="Adınız Soyadınız" type="text" id="adsoyad" required autofocus>
+                    </div>
+                    <div class="form-control">
+                        <input placeholder="E-Posta Adresiniz" id="emailadresi" type="email" required>
+                    </div>
+                    <div class="form-control">
+                        <input placeholder="Konu" type="text" id="konu" required>
+                    </div>
+                    <div class="form-control">
+                        <textarea placeholder="Lütfen Mesajınızı Buraya Yazın.." type="text" id="mesaj"
+                            required></textarea>
+                    </div>
+                    <div class="form-control">
+                        <button name="submit" type="submit" id="submit">GÖNDER</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+    const btn = document.getElementById("submit");
+    var txtadsoyad = document.getElementById("adsoyad");
+    var txtemail = document.getElementById("emailadresi");
+    var txtkonu = document.getElementById("konu");
+    var txtmesaj = document.getElementById("mesaj");
+    btn.addEventListener("click", () => {
+
+        Email.send({
+            SecureToken: "24d3164e-cd49-4162-842d-d15034c4cece",
+            To: 'abdulbarisoylemez21@gmail.com',
+            From: "abdulbarisoylemez21@gmail.com",
+            Subject: " HAVA DURUMU İLETİŞİM FORMU",
+            Body:
+                " as" + txtadsoyad.value + " adlı kişiden bir mesaj var mail adresi :" + " SCDSC" + " Konusu : " + txtkonu.value + " Mesajı : " + txtmesaj.value + ".",
+        }).then(
+            message => alert("Mail başarılı bir şekilde ulaştı")
+        );
+
+
+
+
+    })
+</script>
+
+</html>
